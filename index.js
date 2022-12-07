@@ -1,91 +1,89 @@
-// examine the document object
+// Traversing The DOM
 
-// console.dir(document);
+// var itemList = document.querySelector('#items');
 
-// GET ELEMENT BY ID
+//ParentNode
+// console.log(itemList.parentNode);
+// itemList.parentNode.style.backgroundColor = '#f4f4f4';
+// console.log(itemList.parentNode.parentNode.parentNode);
 
-//console.log(document.getElementById('header-title'));
-// var headertitle = document.getElementById('header-title');
-// var header = document.getElementById('main-header');
 
-// console.log(headertitle);
+//ParentElement
+// console.log(itemList.parentElement);
+// itemList.parentElement.style.backgroundColor = '#f4f4f4';
+// console.log(itemList.parentElement.parentElement.parentElement);
 
-// headertitle.textContent = 'Hello';
-// headertitle.innerText = 'GoodBye';
-// console.log(headertitle.innerText);
-// headertitle.innerHTML = '<h3>hello</h3>';
 
-// headertitle.style.borderBottom = 'Solid 3px #000';
+// ChildNodes
+// console.log(itemList.childNodes);
+// console.log(itemList.children);
+// console.log(itemList.children[1]);
+// itemList.children[1].style.backgroundColor = 'yellow';
 
-// var title = document.getElementsByClassName('title');
 
-// console.log(title);
-// title[0].style.fontWeight = 'bold';
-// title[0].style.color = 'green';
+// // FirstChild
+// console.log(itemList.firstChild);
+// // FirstElementChild
+// console.log(itemList.firstElementChild);
+// itemList.firstElementChild.textContent = 'Hello 1';
 
-// GET ELEMENT BY CLASSNAME
 
-// var list = document.getElementsByClassName('list-group-item');
-// console.log(list);
-// list[2].style.backgroundColor = 'green';
+// LastChild
+// console.log(itemList.lastChild);
+// LastElementChild
+// console.log(itemList.lastElementChild);
+// itemList.lastElementChild.textContent = 'Hello 4';
 
-// // Gives Error
-// // list.style.fontWeight = 'bold';
 
-// for(var i =0;i<list.length;i++)
-// {
-//     list[i].style.fontWeight = 'bold';
-// }
+// //nextSibling
+// console.log(itemList.nextSibling);
+// //nextElementSibling
+// console.log(itemList.nextElementSibling);
 
-// GET ELEMENT BY TAGNAME
 
-// var li = document.getElementsByTagName('li');
-// console.log(li);
-// li[2].textContent = 'hello 3';
-// li[2].style.fontWeight = 'bold';
-// li[2].style.backgroundColor = 'green';
+// previousSibling
+// console.log(itemList.previousSibling);
+// previousElementSibling
+// console.log(itemList.previousElementSibling);
+// itemList.previousElementSibling.style.color = 'green';
 
-// // Gives Error
-// // list.style.fontWeight = 'bold';
 
-// for(var i =0;i<li.length;i++)
-// {
-//     li[i].style.fontWeight = 'bold';
-// }
+// CreateElement
 
-// QuerySelector
+// Create a div
+var newDiv = document.createElement('div');
 
-// var header = document.querySelector('#main-header');
-// header.style.borderBottom = 'solid 4px #000';
+// Add Class
+newDiv.className = 'hello';
 
-// var input = document.querySelector('input');
-// input.value = "Hello World";
+// Add ID
+newDiv.id = 'hello1';
 
-// var submit = document.querySelector('input[type ="submit"]');
-// submit.value = "Send";
+// Add attribute
+newDiv.setAttribute('title', 'Hello Div');
 
-// var item = document.querySelector('.list-group-item');
-// item.style.color = 'red';
+// Create text node
+var newDivText = document.createTextNode('Hello World');
 
-// var lastitem = document.querySelector('.list-group-item:last-child');
-// lastitem.style.backgroundColor = 'yellow';
+// Add text to div
+newDiv.appendChild(newDivText);
 
-// var seconditem = document.querySelector('.list-group-item:nth-child(2)');
-// seconditem.style.backgroundColor = 'green';
+var container = document.querySelector('header .container');
+var h1 = document.querySelector('header h1');
 
-// var thirditem = document.querySelector('.list-group-item:nth-child(3)');
-// thirditem.style.display = 'none';
+console.log(newDiv);
 
-// QuerySelectorAll
+newDiv.style.fontSize = '30px';
 
-var titles = document.querySelectorAll('.title');
-console.log(titles);
+container.insertBefore(newDiv, h1);
 
-var odd = document.querySelectorAll('li:nth-child(odd)');
-var even = document.querySelectorAll('li:nth-child(even)');
+// Another element
 
-for(var i = 0;i<odd.length;i++)
-{
-    odd[i].style.backgroundColor = 'green';
-    even[i].style.backgroundColor = 'yellow';
-}
+var newEle = document.createElement('li');
+newEle.className = 'list-group-item';
+newEle.innerText = 'Hello World';
+
+var unorderedlist = document.querySelector('#items');
+var listitem = document.querySelector('.list-group-item');
+
+unorderedlist.insertBefore(newEle, listitem);
