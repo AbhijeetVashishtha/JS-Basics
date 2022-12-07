@@ -20,3 +20,15 @@ var title = document.getElementsByClassName('title');
 console.log(title);
 title[0].style.fontWeight = 'bold';
 title[0].style.color = 'green';
+
+var list = document.getElementsByClassName('list-group-item');
+console.log(list);
+list[2].style.backgroundColor = 'green';
+
+// Gives Error
+// list.style.fontWeight = 'bold';
+
+for(var i =0;i<list.length;i++)
+{
+    list[i].style.fontWeight = 'bold';
+}
