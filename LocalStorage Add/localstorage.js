@@ -31,21 +31,35 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 function showNewUserOnScreen(user){
+    document.getElementById('email').value = '';
+    document.getElementById('name').value = '';
+    document.getElementById('number').value = '';
+
     const parentNode = document.getElementById('ListOfUsers');
     const childHTML = `<li id=${user.email}> ${user.name} - ${user.email} 
                        <button onclick = deleteItem('${user.email}')>Delete User </button>
+                       <button onclick = editUserdetails('${user.email}','${user.name}','${user.number}')>Edit user</button>
                        </li>`;
     
     parentNode.innerHTML = parentNode.innerHTML + childHTML;
 }
 
+function editUserdetails(email, name, number){
+    document.getElementById('email').value = email;
+    document.getElementById('name').value = name;
+    document.getElementById('number').value = number;
+
+    deleteItem(email);
+}
+
 function deleteItem(email){
+    console.log(email);
     localStorage.removeItem(email);
     removeUserFromScreen(email);
 }
 
 function removeUserFromScreen(email){
-    const parentNode = document.getElementById('Listofusers');
+    const parentNode = document.getElementById('ListOfUsers');
     const childElementToBeDeleted = document.getElementById(email);
 
     parentNode.removeChild(childElementToBeDeleted);
